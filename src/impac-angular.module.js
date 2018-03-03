@@ -95,7 +95,8 @@ angular.module('impac.components.widgets',
     'impac.components.widgets.sales-new-vs-existing-customers',
     'impac.components.widgets.sales-average-purchase-size',
     'impac.components.widgets.sales-average-visit',
-    'impac.components.widgets.sales-customers-engagement'
+    'impac.components.widgets.sales-customers-engagement',
+    'impac.components.widgets.sales-average-spend-per-customer'
   ]
 );
 angular.module('impac.components.widgets-settings',
