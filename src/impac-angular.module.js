@@ -99,7 +99,8 @@ angular.module('impac.components.widgets',
     'impac.components.widgets.sales-customers-engagement',
     'impac.components.widgets.sales-average-spend-per-customer',
     'impac.components.widgets.sales-repeat-customers',
-    'impac.components.widgets.sales-new-customers'
+    'impac.components.widgets.sales-new-customers',
+    'impac.components.widgets.sales-days-between-visits'
   ]
 );
 angular.module('impac.components.widgets-settings',
