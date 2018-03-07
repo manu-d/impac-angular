@@ -73,7 +73,7 @@ module.controller('WidgetSalesCustomersEngagementCtrl', ($scope, $q, $filter, Im
           shared: false
           backgroundColor: '#FBF7E6'
           formatter: ->
-            date = moment.utc(this.x).format('Do MMM YYYY')
+            date = moment.utc(this.x).format('MMMM YYYY')
             name = this.series.name
             "<strong>#{date}</strong><br>#{name}: #{this.y}%"
 
