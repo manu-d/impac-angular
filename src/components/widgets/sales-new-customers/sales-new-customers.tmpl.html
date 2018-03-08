@@ -16,8 +16,31 @@
   <div ng-hide="widget.isEditMode">
     <!-- Data found -->
     <div ng-show="(isDataFound==true)" class="">
-      <h6>Percentage of new customers</h6>
-      <impac-figure-layout content="widget.content.figure"/>
+      <h6>As at {{latestDate()}}</h6>
+      <div>
+        <div align="center" class="options">
+          <a ng-click="toggleHistMode(false)" ng-class="!isHistMode ? 'active' : 'inactive'"> Latest </a> |
+          <a ng-click="toggleHistMode(true)" ng-class="isHistMode ? 'active' : 'inactive'" translate>History</a>
+        </div>
+
+        <div class="{{isHistMode ? 'arrow-container right' : 'arrow-container left'}}">
+          <div class="arrow" />
+          <div class="arrow-border" />
+        </div>
+      </div>
+
+      <div ng-hide="isHistMode">
+        <impac-figure-layout content="widget.content.figure"/>
+      </div>
+
+      <div ng-show="isHistMode">
+        <div impac-chart draw-trigger="drawTrigger.promise" deferred="chartDeferred"></div>
+        <div class="legend">
+          <span ng-style="{ 'color': getColorByIndex(0) }">Merchant</span> -
+          <span ng-style="{ 'color': getColorByIndex(1) }">Competitive Set</span> -
+          <span ng-style="{ 'color': getColorByIndex(2) }">Industry</span>
+        </div>
+      </div>
     </div>
 
     <!-- No data found -->
