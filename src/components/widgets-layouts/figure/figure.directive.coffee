@@ -1,6 +1,9 @@
 module = angular.module('impac.components.widgets-layouts.figure',[])
 
-module.controller('FigureLayoutCtrl', ($scope, $translate, $timeout, ImpacWidgetsSvc, ImpacTheming, ImpacUtilities) ->
+module.controller('FigureLayoutCtrl', ($scope, $translate, ChartFormatterSvc) ->
+
+  $scope.getColorByIndex = (index) ->
+    ChartFormatterSvc.getColor(index)
 
 )
 
