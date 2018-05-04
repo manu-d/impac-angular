@@ -9,15 +9,15 @@ angular.module('impacWorkspace').service('DevSettings', function ($q, ImpacRoute
   var DEFAULTS = {
     // API Endpoints
     mnoeUrl: {
-      host: 'https://impac-mnoe-uat.maestrano.io',
+      host: 'http://localhost:7000',
       base: '/mnoe/jpi/v1'
     },
     impacUrl: {
-      host: 'https://api-impac-uat.maestrano.io',
+      host: 'http://localhost:4000',
       base: '/api'
     },
     // Selected Organization - first organisations if unspecified
-    orgUid: '',
+    orgUid: 'org-fbxr',
     // -----------------------------------------------
     // Kpis configurations
     // -----------------------------------------------

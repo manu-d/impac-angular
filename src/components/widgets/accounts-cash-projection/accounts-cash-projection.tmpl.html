@@ -35,7 +35,7 @@
         </button>
         <button class="btn btn-sm btn-default" ng-click="trendList.showAll()" title="See all trends">
           <i class="fa fa-list" />
-          See all trends
+          Select trends
         </button>
         <button class="btn btn-sm btn-default" ng-click="addTrendPopup.show()" title="Create a new trend">
           <i class="fa fa-pencil" />
@@ -48,6 +48,6 @@
   </div>
 
   <transactions-add ng-if="addForecastPopup.display" contacts="contacts" resources-type="addForecastPopup.resourcesType" on-hide="addForecastPopup.hide()" on-create-transaction="addForecastPopup.createTransaction(trx)"/>
-  <trends-add ng-if="addTrendPopup.display" on-hide="addTrendPopup.hide()" on-create-trend="addTrendPopup.createTrend(trend)"/>
+  <trends-add ng-if="addTrendPopup.display" on-hide="addTrendPopup.hide()" on-create-trend="addTrendPopup.createTrend(trend)" accounts="accounts" chart="chart"/>
 
 </div>

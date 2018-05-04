@@ -1,7 +1,7 @@
 <div id="trends-list">
   <div class="row top">
     <div class="col-xs-6 pull-left">
-      <label class="btn btn-sm btn-default" ng-click="$ctrl.onHide()" ng-hide="$ctrl.listOnly">
+      <label class="btn btn-sm btn-default" ng-click="$ctrl.backClick()" ng-hide="$ctrl.listOnly">
         <i class="fa fa-chevron-left" />
         Back to chart
       </label>
@@ -13,8 +13,10 @@
   <div class="table-container">
     <table class="table table-striped">
       <tr>
+        <th/>
         <th>Name</th>
         <th>Rate</th>
+        <th>Account</th>
         <th>Periodicity</th>
         <th>Start Date</th>
         <th>Last apply date</th>
@@ -22,6 +24,7 @@
         <th/>
       </tr>
       <tr ng-repeat="trend in $ctrl.trends">
+        <td><input type="checkbox" ng-model="trend.default" ng-change="$ctrl.changeDefault(trend)"></td>
         <td ng-if="!$ctrl.editMode">{{trend.name}}</td>
         <td ng-if="$ctrl.editMode">
           <input type="text" class="form-control" ng-model="trend.name"/>
@@ -30,14 +33,15 @@
         <td ng-if="$ctrl.editMode">
           <input style="width: 45px;" type="number" value="0" min="0" step="1" ng-model="trend.rate"/>%
         </td>
-        <td ng-if="!$ctrl.editMode">{{trend.period}}</td>
+        <td>{{trend.account_name}}</td>
+        <td ng-if="!$ctrl.editMode">{{trend.periodicity}}</td>
         <td ng-if="$ctrl.editMode">
-          <select ng-model="trend.period">
+          <select ng-model="trend.periodicity">
             <option>once</option>
             <option>daily</option>
             <option>weekly</option>
             <option>monthly</option>
-            <option>yearly</option>
+            <option>annually</option>
           </select>
         </td>
         <td>

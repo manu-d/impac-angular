@@ -5,8 +5,10 @@ module.component('trendsAdd', {
   bindings:
     onHide: '&'
     onCreateTrend: '&'
+    accounts: '='
+    chart: '='
 
-  controller: ($scope) ->
+  controller: ($scope, HighchartsFactory) ->
     ctrl = this
 
     ctrl.$onInit = ->
@@ -23,8 +25,14 @@ module.component('trendsAdd', {
       ctrl.trend =
         rate: 0
         period: "Daily"
+        startDate: new Date()
         untilDate: -1
       ctrl.selectedPeriod = 1
+      options = ctrl.chart.highChartOptions
+      ctrl.addChart = new HighchartsFactory('trends-add-chart', ctrl.chart.series, options)
+      ctrl.addChart.removeRangeSelector()
+      ctrl.addChart.removeNavigator()
+      ctrl.addChart.render()
 
     ctrl.period = ->
       switch ctrl.trend.period
@@ -34,7 +42,7 @@ module.component('trendsAdd', {
         when "Daily" then ("Day" + (if ctrl.selectedPeriod <= 1 then "" else "s"))
         when "Weekly" then ("Week" + (if ctrl.selectedPeriod <= 1 then "" else "s"))
         when "Monthly" then ("Month" + (if ctrl.selectedPeriod <= 1 then "" else "s"))
-        when "Yearly" then ("Year" + (if ctrl.selectedPeriod <= 1 then "" else "s"))
+        when "Annually" then ("Year" + (if ctrl.selectedPeriod <= 1 then "" else "s"))
 
     ctrl.isPeriodDisabled = ->
       ctrl.trend.period == "Once"
@@ -47,6 +55,7 @@ module.component('trendsAdd', {
     ctrl.createTrend = ->
       ctrl.onHide()
       ctrl.trend.period = ctrl.trend.period.toLowerCase()
+      ctrl.trend.account_id = ctrl.trend.account_id.id
       ctrl.onCreateTrend({ trend: ctrl.trend })
 
     ctrl.updateStartDate = ->
